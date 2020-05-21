@@ -38,7 +38,7 @@ class Footer extends Component {
             <AppBar position="static" style={footerStyle}>
                 <Toolbar style={{ padding: "0", top: "0", position: "relative", width: "100%" }}>
                     <Typography style={{ marginBottom: "1%", textAlign: "center", width: "100%" }}>
-                        Contacts Web App <CopyrightIcon/> 2019 Xianwei Huang
+                        Contacts Web App <CopyrightIcon/> 2020 Xianwei Huang
                     </Typography>
                 </Toolbar>
             </AppBar>

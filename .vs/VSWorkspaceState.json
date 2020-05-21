@@ -3,8 +3,10 @@
     "",
     "\\public",
     "\\src",
-    "\\src\\components\\reports"
+    "\\src\\components",
+    "\\src\\components\\reports",
+    "\\src\\images"
   ],
-  "SelectedNode": "\\src\\App.js",
+  "SelectedNode": "\\src\\images\\card_background.jpg",
   "PreviewInSolutionExplorer": false
 }

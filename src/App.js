@@ -15,8 +15,8 @@ class App extends Component {
         contacts: [],
         order: true,
         u: {},
-        userId: "48c974fa-96f1-4d41-b5fa-db2f16aa6c62",
-        apiKey: "a9658c3d-985a-426d-b5be-44ff45af2ff5",
+        userId: "4ae240f8-2fdc-41f0-a547-11c2a0f085a4",
+        apiKey: "6d2ada99-8d04-4bf1-905c-5c023d1de910",
     };
 
     //Construct, get data from JSON placehodler, sort contacts, and get urls from Image generator API

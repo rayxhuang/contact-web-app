@@ -41,8 +41,8 @@ class AddressMap extends Component {
         return people;
     }
 
-    //IMPORTANT!!!
-    //GoogleMapReact gives a WARNING because there is no API key for me to use, google wants me to buy one
+    //IMPORTANT
+    //GoogleMapReact gives a WARNING because there is no free API key for me to use
     render() {
         return (
             <div style={ mapStyle }>

@@ -11,7 +11,6 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CardBackground from '../images/card_background.jpg';
-import CatchPhrase from './CatchPhrase';
 
 class Contact extends Component {
     state = {
@@ -23,16 +22,12 @@ class Contact extends Component {
         this.setState({ card: !this.state.card });
     }
 
-    //Handle async catchphrase urls retriving
-    componentDidUpdate(prevProps) {
-        if (prevProps.url !== this.props.url) {
-            this.setState({ card: this.state.card });
-        }
+    componentDidMount() {
+        this.setState({ card: this.state.card });
     }
 
     render() {
         const { name, email, phone, website, company } = this.props.contact;
-        let url = this.props.url;
         let mUrl = "mailto:" + email;
         let pUrl = "tel:" + phone;
         let wUrl = "http://" + website;
@@ -81,9 +76,6 @@ class Contact extends Component {
                                 </Typography>
                             </CardContent>
                         </Card>
-                        <Typography variant="body2" color="textSecondary" component="span" style={{marginTop: "2%"}}>
-                            <CatchPhrase phrase={company.catchPhrase} url={url}/>
-                        </Typography>
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.clicked} color="primary">

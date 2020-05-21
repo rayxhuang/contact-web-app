@@ -14,16 +14,13 @@ class App extends Component {
         orgContacts: [],
         contacts: [],
         order: true,
-        u: {},
-        userId: "4ae240f8-2fdc-41f0-a547-11c2a0f085a4",
-        apiKey: "6d2ada99-8d04-4bf1-905c-5c023d1de910",
     };
 
     //Construct, get data from JSON placehodler, sort contacts, and get urls from Image generator API
     constructor(props) {
         super(props);
         axios.get("http://jsonplaceholder.typicode.com/users").then(res => {
-            this.setState({ orgContacts: res.data, contacts: res.data }, function () { this.getImage(this.state.orgContacts); }.bind(this))
+            this.setState({ orgContacts: res.data, contacts: res.data })
         });
     }
 
@@ -53,36 +50,6 @@ class App extends Component {
         this.state.contacts.sort(compare);
     }
 
-    //Handle getting catchphrase image urls from external API
-    async getImage(data) {
-        let phrases = {};
-        for (let i = 0; i < data.length; i++) {
-            const { id, company } = data[i];
-            phrases[id] = company.catchPhrase
-        }
-        let urls = {};
-        for (let i in phrases) {
-            let phrase = phrases[i];
-            if (phrase.length !== 0) {
-                require('request');
-                const request = require('request-promise');
-                const data = {
-                    html: "<div class='box'>" + phrase + "</div>",
-                    css: ".box { text-align: center; font-size: 20px; background-color: #f1d38d; padding: 20px; font-family: 'Roboto'; }",
-                }
-
-                const image = await request.post({ url: 'https://hcti.io/v1/image', form: data }).auth(this.state.userId, this.state.apiKey)
-
-                if (typeof image !== 'undefined') {
-                    const { url } = JSON.parse(image);
-                    urls[i] = url
-                }
-            }
-            
-        }
-        this.setState({ u: urls })
-    }
-
     //Handle switching between ascending order and descending
     sorting = (sort) => {
         this.setState({ order: !sort });
@@ -110,7 +77,7 @@ class App extends Component {
                 <Route exact path="/" render={props => (
                     <div className="App" style={appStyle}>
                         <Header searching={this.searching} sorting={this.sorting}/>
-                        <Contacts contacts={this.state.contacts} urls={this.state.u}/>
+                        <Contacts contacts={this.state.contacts}/>
                         <Footer />
                     </div>
                 )} />
